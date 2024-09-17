@@ -1,4 +1,4 @@
-import Part from 'components/Content/Part/Part';
+import Part from "components/Content/Part/Part";
 /* eslint-disable react/prop-types */
 const Content = (props) => {
   return (
