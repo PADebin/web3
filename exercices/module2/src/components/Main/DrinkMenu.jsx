@@ -1,10 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 import { ReactElement } from "react";
 
-const DrinkMenu = (props) => {
+const DrinkMenu = ({ title, children }) => {
   return (
     <div className="drink-menu">
-      <h4>{props.title}</h4>
-      <div className="drink-items">{props.children}</div>
+      <h4>{title}</h4>
+      <div className="drink-items">{children}</div>
     </div>
   );
 };

@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+.env
+Thumbs.db
+.DS_Store
+lost+found
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# ignore all node_modules folders and nested folders & files
+node_modules
+# ignore the specific VS Code configuration parameters
+.vscode
+# ignore the development environment variables (if any)
+.env
+# ignore the MacOS specific files
+.DS_Store
+# ignore the Windows specific files
+Thumbs.db
+# ignore the Linux specific files
+lost+found
