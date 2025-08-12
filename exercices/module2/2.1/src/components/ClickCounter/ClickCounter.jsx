@@ -6,14 +6,20 @@
 import { useState } from "react";
 
 function ClickCounter({ title, message, hoverMessage }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(
+    JSON.parse(localStorage.getItem("count")) || 0
+  );
   const [hovered, setHovered] = useState(false);
 
   return (
     <div className="card">
       <h4>{title}</h4>
       <button
-        onClick={() => setCount((count) => count + 1)}
+        onClick={() => {
+          const newCount = count + 1;
+          setCount(newCount);
+          localStorage.setItem("count", JSON.stringify(newCount));
+        }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
