@@ -1,13 +1,12 @@
-import { useState } from "react";
 import reactLogo from "../../assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import ClickCounter from "components/ClickCounter/ClickCounter";
 
 function App() {
-  const [count, setCount] = useState(0);
   const message = "You are a master in the art of clicking !";
   const title = "Mon compteur de clics";
+  const hoverMessage = "Please click on me now !";
 
   return (
     <>
@@ -21,10 +20,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <ClickCounter
-        count={count}
-        setCount={setCount}
         title={title}
         message={message}
+        hoverMessage={hoverMessage}
       />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
