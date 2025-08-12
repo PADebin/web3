@@ -1,14 +1,9 @@
-const DrinkCard = (props) => {
+const DrinkCard = ({ title, image, children }) => {
   return (
     <div className="drink-card">
-      <img
-        src={props.image}
-        alt={props.title}
-        className="drink-image"
-        width="50"
-      />
-      <h2>{props.title}</h2>
-      <div className="drink-details">{props.children}</div>
+      <img src={image} alt={title} className="drink-image" width="50" />
+      <h2>{title}</h2>
+      <div className="drink-details">{children}</div>
     </div>
   );
 };
