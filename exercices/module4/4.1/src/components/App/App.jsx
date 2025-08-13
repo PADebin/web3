@@ -29,7 +29,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: "24px" }}>
       <h2>Phonebook</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: 10 }}>
