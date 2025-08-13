@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Filter from "../Filter/Filter";
+import PersonForm from "../PersonForm/PersonForm";
+import Persons from "../Persons/Persons";
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -42,49 +45,17 @@ const App = () => {
   return (
     <div style={{ padding: "24px" }}>
       <h2>Phonebook</h2>
-      <div style={{ marginBottom: 16 }}>
-        <label htmlFor="filter-input">filter shown with: </label>
-        <input
-          id="filter-input"
-          value={filter}
-          onChange={handleFilterChange}
-          className="phonebook-input"
-        />
-      </div>
+      <Filter filter={filter} onChange={handleFilterChange} />
       <h3>Add a new number</h3>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: 10 }}>
-          <label htmlFor="name-input">name: </label>
-          <input
-            id="name-input"
-            value={newName}
-            onChange={handleNameChange}
-            className="phonebook-input"
-          />
-        </div>
-        <div style={{ marginBottom: 10 }}>
-          <label htmlFor="number-input">number: </label>
-          <input
-            id="number-input"
-            value={newNumber}
-            onChange={handleNumberChange}
-            className="phonebook-input"
-          />
-        </div>
-        <div>
-          <button type="submit" className="phonebook-add-btn">
-            add
-          </button>
-        </div>
-      </form>
+      <PersonForm
+        onSubmit={handleSubmit}
+        newName={newName}
+        handleNameChange={handleNameChange}
+        newNumber={newNumber}
+        handleNumberChange={handleNumberChange}
+      />
       <h2>Numbers</h2>
-      <ul>
-        {filteredPersons.map((person) => (
-          <li key={person.name}>
-            {person.name} {person.number && `: ${person.number}`}
-          </li>
-        ))}
-      </ul>
+      <Persons persons={filteredPersons} />
       {/* <div>debug: {newName}</div> */}
     </div>
   );
