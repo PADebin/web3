@@ -20,6 +20,14 @@ const App = () => {
       <div>bon : {good}</div>
       <div>neutre : {neutral}</div>
       <div>mauvais : {bad}</div>
+      <hr style={{margin: '16px 0'}} />
+      <div>total : {good + neutral + bad}</div>
+      <div>
+        moyenne : {good + neutral + bad === 0 ? 0 : ((good * 1 + neutral * 0 + bad * -1) / (good + neutral + bad)).toFixed(2)}
+      </div>
+      <div>
+        % positifs : {good + neutral + bad === 0 ? '0%' : ((good / (good + neutral + bad)) * 100).toFixed(1) + '%'}
+      </div>
     </div>
   );
 };
