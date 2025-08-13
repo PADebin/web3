@@ -1,12 +1,23 @@
 import Button from "components/Button/Button";
 import Statistics from "components/Statistics/Statistics";
-import { useState } from "react";
+import Loading from "components/Loading/Loading";
+import { useState, useEffect } from "react";
 
 const App = () => {
   // enregistrer les clics de chaque bouton dans un état différent
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div
