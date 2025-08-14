@@ -9,15 +9,17 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const person = allPersons.find((person) => person.id === id);
-
-  if (person) {
-    res.json(person);
-  } else {
-    res.status(404).end();
-  }
+// GET /persons/:id : récupère une personne par id depuis MongoDB
+router.get("/:id", (req, res, next) => {
+  Person.findById(req.params.id)
+    .then((person) => {
+      if (person) {
+        res.json(person);
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch((error) => next(error));
 });
 
 // DELETE /persons/:id : supprime une personne dans MongoDB
