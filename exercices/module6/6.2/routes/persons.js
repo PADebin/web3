@@ -60,17 +60,25 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+// PUT /persons/:id : met à jour le numéro d'une personne dans MongoDB
+router.put("/:id", (req, res, next) => {
   const personPayload = req.body;
-  const id = Number(req.params.id);
-  const personIndex = allPersons.findIndex((person) => person.id === id);
-  if (personIndex === -1) {
-    res.status(404).end();
-  } else {
-    const updatedPerson = { ...personPayload, id: allPersons[personIndex].id };
-    allPersons[personIndex] = updatedPerson;
-    res.json(updatedPerson);
-  }
+  const update = {
+    name: personPayload.name,
+    number: personPayload.number,
+  };
+  Person.findByIdAndUpdate(req.params.id, update, {
+    new: true,
+    runValidators: true,
+  })
+    .then((updatedPerson) => {
+      if (updatedPerson) {
+        res.json(updatedPerson);
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch((error) => next(error));
 });
 
 module.exports = router;
