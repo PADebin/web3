@@ -20,13 +20,13 @@ router.get("/:id", (req, res) => {
   }
 });
 
-router.delete("/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const personIndex = allPersons.findIndex((person) => person.id === id);
-  if (personIndex > -1) {
-    allPersons.splice(personIndex, 1); // We do NOT use delete because it creates a sparse array with a wrong length
-  }
-  res.status(204).end();
+// DELETE /persons/:id : supprime une personne dans MongoDB
+router.delete("/:id", (req, res, next) => {
+  Person.findByIdAndDelete(req.params.id)
+    .then((result) => {
+      res.status(204).end();
+    })
+    .catch((error) => next(error));
 });
 
 router.post("/", (req, res) => {
