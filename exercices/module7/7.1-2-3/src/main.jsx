@@ -5,6 +5,7 @@ import App from "components/App/App";
 import HomePage from "components/Pages/HomePage";
 import CinemaPage from "components/Pages/CinemaPage";
 import MovieListPage from "components/Pages/MovieListPage";
+import AddMoviePage from "components/Pages/AddMoviePage"; // Ajoute cet import
 import "antd/dist/reset.css";
 import "./index.css";
 
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "", element: <HomePage /> },
       { path: "cinema", element: <CinemaPage /> },
       { path: "movies", element: <MovieListPage /> },
+      { path: "add-movie", element: <AddMoviePage /> }, // Nouvelle route
     ],
   },
 ]);

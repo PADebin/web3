@@ -14,14 +14,19 @@ const items = [
     key: "movies",
     label: <Link to="/movies">Films</Link>,
   },
+  {
+    key: "add-movie",
+    label: <Link to="/add-movie">Ajouter un film</Link>,
+  },
 ];
 
 const Menu = () => {
   const location = useLocation();
-  // Détermine la clé active selon le chemin
   let selectedKey = "home";
   if (location.pathname.startsWith("/cinema")) selectedKey = "cinema";
   else if (location.pathname.startsWith("/movies")) selectedKey = "movies";
+  else if (location.pathname.startsWith("/add-movie"))
+    selectedKey = "add-movie";
 
   return (
     <AntMenu mode="horizontal" items={items} selectedKeys={[selectedKey]} />
