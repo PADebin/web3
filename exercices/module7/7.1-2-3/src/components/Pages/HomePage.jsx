@@ -1,8 +1,20 @@
+import { useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
+import PageTitle from "components/PageTitle/PageTitle";
+
 const HomePage = () => {
+  const { movies } = useOutletContext();
+
   return (
     <div>
-      <h1>Home Page</h1>
-      <p>Welcome to my favorite movies website!</p>
+      <PageTitle title="Mes films favoris" />
+      <ul>
+        {movies.map((movie) => (
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
