@@ -2,7 +2,11 @@ import { useContext } from "react";
 import { ThemeContext } from "/src/contexts/themeContext";
 
 const Footer = () => {
-  const { toggleTheme, getCurrentThemeDetails, theme: themeName } = useContext(ThemeContext);
+  const {
+    toggleTheme,
+    getCurrentThemeDetails,
+    theme: themeName,
+  } = useContext(ThemeContext);
   const theme = getCurrentThemeDetails();
   const icon = themeName === "dark" ? "🌙" : "☀️";
   return (
