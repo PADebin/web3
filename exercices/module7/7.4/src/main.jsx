@@ -1,3 +1,4 @@
+import "antd/dist/reset.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -7,7 +8,6 @@ import CinemaPage from "components/Pages/CinemaPage";
 import MovieListPage from "components/Pages/MovieListPage";
 import AddMoviePage from "components/Pages/AddMoviePage";
 import MoviePage from "components/Pages/MoviePage";
-import "antd/dist/reset.css";
 import "./index.css";
 
 const router = createBrowserRouter([
