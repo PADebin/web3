@@ -33,10 +33,10 @@ router.post("/", (req, res) => {
   const personPayload = req.body;
   const errorMessages = [];
   if (!personPayload.name) {
-    errorMessages.push("name must be present");
+    errorMessages.push("The name must be present");
   }
   if (!personPayload.number) {
-    errorMessages.push("number must be present");
+    errorMessages.push("The number must be present");
   }
 
   if (errorMessages.length > 0) {
