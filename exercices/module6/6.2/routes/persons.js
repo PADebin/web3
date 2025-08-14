@@ -31,12 +31,6 @@ router.delete("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
   const personPayload = req.body;
-  const newId = Math.floor(Math.random() * 1e9);
-  const newPerson = {
-    ...personPayload,
-    id: newId,
-  };
-
   const errorMessages = [];
   if (!personPayload.name) {
     errorMessages.push("name must be present");
@@ -45,20 +39,23 @@ router.post("/", (req, res) => {
     errorMessages.push("number must be present");
   }
 
-  const nameExists = allPersons.some(
-    (person) => person.name === newPerson.name
-  );
-  if (nameExists) {
-    errorMessages.push("name must be unique");
+  if (errorMessages.length > 0) {
+    return res.status(422).json({ errorMessages });
   }
 
-  if (errorMessages.length > 0) {
-    res.status(422).json({ errorMessages });
-  } else {
-    // push not concat here. We want to mutate the array.
-    allPersons.push(newPerson);
-    res.json(newPerson);
-  }
+  const person = new Person({
+    name: personPayload.name,
+    number: personPayload.number,
+  });
+
+  person
+    .save()
+    .then((savedPerson) => {
+      res.json(savedPerson);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error.message });
+    });
 });
 
 router.put("/:id", (req, res) => {
